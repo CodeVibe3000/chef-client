@@ -54,7 +54,7 @@ export function importIntoRecipe(recipe) {
                 }})
             }
         }
-        if(instructionsSTR.length != 0){
+        if(instructionsSTR.length !== 0){
             client.mutate({
                 mutation: addInstructionsToRecipe,
                 variables: {

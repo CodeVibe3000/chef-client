@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import { Container, Input, Button, Form, Header, Modal, Icon } from "semantic-ui-react";
 import { graphql } from "react-apollo";
 import createRecipe from '../../graphql/createRecipe'
@@ -71,7 +71,6 @@ function getRecipe() {
 }
 
 const ImportModal = () => {
-    var publicValue = true
     return (
         <Modal trigger={<Button fluid color="google plus">Import</Button>} closeIcon>
             <Header icon='download' content='Import New Recipe' />
