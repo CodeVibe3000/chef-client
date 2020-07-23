@@ -1,0 +1,5 @@
+.hero{
+    padding: 100px;
+    background: rgb(239,239,236);
+    background: linear-gradient(144deg, rgba(239,239,236,1) 0%, rgba(225,191,246,1) 99%);
+}

@@ -1,0 +1,25 @@
+*:not(.icon):not(.title) {
+  font-family: 'Acme', sans-serif;
+}
+
+
+.feed-recipe{
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.recipe-card {
+  float: left;
+}
+
+.grey {
+  color: rgb(185, 184, 184);
+}
+
+.icon {
+  margin: 15px;
+}
+
