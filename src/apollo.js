@@ -5,6 +5,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { onError } from "apollo-link-error";
 import axios from 'axios'
 
+console.log(process.env.NODE_ENV)
+
 const httpLink = createHttpLink({
   uri: (process.env.NODE_ENV === "development" ? "http://localhost:4000" : "https://chefappbob.herokuapp.com") +'/graphql',
 });
