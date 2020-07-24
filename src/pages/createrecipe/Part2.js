@@ -5,7 +5,7 @@ export default class Part2 extends Component {
     render() {
         return (
             <Container text style={{ marginTop:"80px" }}>
-                <form method="POST" enctype="multipart/form-data" action="http://localhost:4000/uploadRecipeImage">
+                <form method="POST" enctype="multipart/form-data" action={(process.env.NODE_ENV === "development" ? "http://localhost:4000" : "https://chefappbob.herokuapp.com") +'/uploadRecipeImage'}>
                     <h1>Upload Image</h1>
                     <Input name="recipeId" fluid style={{ visibility:"hidden" }} value={this.props.id} /><br></br>
                     <Input name="image" id="image" type="file" fluid /><br></br>

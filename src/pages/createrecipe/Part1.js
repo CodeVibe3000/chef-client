@@ -57,7 +57,7 @@ class Part1 extends Component {
 
 function getRecipe() {
     console.log(document.getElementById("url").value)
-    fetch('http://importrecipe.herokuapp.com/import', {
+    fetch('https://importrecipe.herokuapp.com/import', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
