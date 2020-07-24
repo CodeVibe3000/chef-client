@@ -26,7 +26,7 @@ const authLink = setContext((_, { headers }) => {
 const errorLink = onError(({ networkError }) => {
   try{
     if (networkError.statusCode === 403) {
-      axios.post((process.env.NODE_ENV === "development" ? "http://localhost:4000" : "chefappbob.herokuapp.com") +"/refresh_token", {}, {headers:{
+      axios.post((process.env.NODE_ENV === "development" ? "http://localhost:4000" : "https://chefappbob.herokuapp.com") +"/refresh_token", {}, {headers:{
         refresh:localStorage.getItem("refreshToken")
       }}).then(res => {
         const token = res.data.accessToken
