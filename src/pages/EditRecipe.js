@@ -39,12 +39,12 @@ class EditRecipeComponent extends React.Component {
     }
 
     computeIngredientsHTML = () => {
-        if(!this.state.ingredients){
+        if (!this.state.ingredients) {
             return "<p>Enter Ingredients</p>"
-        }else{
+        } else {
             var html = ""
-            for(var i of this.state.ingredients){
-                html += "<div>"+i+"</div>"
+            for (var i of this.state.ingredients) {
+                html += "<div>" + i + "</div>"
             }
             return html
         }
@@ -66,16 +66,16 @@ class EditRecipeComponent extends React.Component {
                     </center>
                 </div>
                 <div style={{ marginLeft: "480px" }}>
-                    <Modal size={'fullscreen'} open={this.state.ingOpen} style={{marginLeft: "40px"}} onClose={() => {
-                        this.setState({ingOpen: false})
+                    <Modal size={'fullscreen'} open={this.state.ingOpen} style={{ marginLeft: "40px" }} onClose={() => {
+                        this.setState({ ingOpen: false })
                     }}>
                         <Modal.Header>Edit Ingredients</Modal.Header>
                         <Modal.Content>
-                        <div id="editIngredients" className="thingcontainer" contentEditable={true} dangerouslySetInnerHTML={                            {
+                            <div id="editIngredients" className="thingcontainer" contentEditable={true} dangerouslySetInnerHTML={{
                                 __html: this.computeIngredientsHTML()
                             }}>
-                        </div>
-                        <br></br>
+                            </div>
+                            <br></br>
                         </Modal.Content>
                         <Modal.Actions>
                             <Button
@@ -100,7 +100,7 @@ class EditRecipeComponent extends React.Component {
                                             id: this.state.id
                                         }
                                     })
-                                }}>Publish</Button>): null
+                                }}>Publish</Button>) : null
                             }
                         </div>
                     </div>
@@ -135,20 +135,9 @@ class EditRecipeComponent extends React.Component {
                             }
                             {
                                 this.state.instructions ?
-                                    <div>{
-                                        this.state.instructions.map((e, i) => {
-                                            if (i === 0) {
-                                                return (
-                                                    <>
-                                                        <p className="thing">{e}</p>
-                                                    </>
-                                                )
-                                            } else {
-                                                return (
-                                                    <p className="thing">{e}</p>
-                                                )
-                                            }
-                                        })}
+                                    <div className="thingcontainer" dangerouslySetInnerHTML={{__html:
+                                        this.state.instructions
+                                    }}>
                                     </div> : null
                             }<br></br><br></br>
                             {

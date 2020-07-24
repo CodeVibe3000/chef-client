@@ -35,11 +35,11 @@ export function importIntoRecipe(recipe) {
             id:res.data.createRecipe,
             url: (recipe.image).replace("https://", "")
         }})
-        var instructionsSTR = []
+        var instructionsSTR = ""
         for(var i of recipe.instructions) {
             if(typeof i == "string"){
                 console.log(i)
-                instructionsSTR.push(i)
+                instructionsSTR += `<p>${i}</p><br>`
             }else{
                 console.log(i.name)
                 console.log(i.instructions)

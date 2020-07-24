@@ -47,23 +47,12 @@ export default function ViewRecipe() {
                         recipe.instructions ? <h2>Instructions</h2> : null
                     }
                     {
-                        recipe.instructions ?
-                            <div>{
-                                recipe.instructions.map((e, i) => {
-                                    if (i === 0) {
-                                        return (
-                                            <>
-                                                <p className="thing">{e}</p>
-                                            </>
-                                        )
-                                    } else {
-                                        return (
-                                            <p className="thing">{e}</p>
-                                        )
-                                    }
-                                })}
-                            </div> : null
-                    }<br></br>
+                                recipe.instructions ?
+                                    <div className="thingcontainer" dangerouslySetInnerHTML={{__html:
+                                        recipe.instructions
+                                    }}>
+                                    </div> : null
+                            }<br></br>
                     {
                         <div>
                             {
