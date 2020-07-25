@@ -12,14 +12,17 @@ import publishRecipe from '../graphql/publishRecipe'
 import { client } from ".././apollo";
 
 import saveIngredients from '../services/saveIngredients.js'
+import saveInstructions from '../services/saveInstructions.js'
 
 import "../App.css"
 
 class EditRecipeComponent extends React.Component {
+
     state = {
         name: "",
         description: "",
-        ingOpen: false
+        ingOpen: false,
+        insOpen: false
     }
 
     componentDidMount() {
@@ -50,8 +53,6 @@ class EditRecipeComponent extends React.Component {
         }
     }
 
-    //bob
-
     render() {
         return (
             <div>
@@ -64,6 +65,10 @@ class EditRecipeComponent extends React.Component {
                             this.setState({ ingOpen: true })
                         }}><i class="fas fa-utensils icon"></i> Edit Ingredients</Button>
                         <br></br><br></br>
+                        <Button onClick={() => {
+                            this.setState({ insOpen: true })
+                        }}><i class="fas fa-wrench icon"></i> Edit Instructions</Button>
+                        <br></br><br></br>
                         <Button color="blue" fluid onClick={this.rename}>Save</Button>
                     </center>
                 </div>
@@ -72,7 +77,7 @@ class EditRecipeComponent extends React.Component {
                         this.setState({ ingOpen: false })
                     }}>
                         <Modal.Header>Edit Ingredients</Modal.Header>
-                        <Modal.Content>
+                        <Modal.Content style={{ height: "500px" }}>
                             <div id="editIngredients" className="thingcontainer" contentEditable={true} dangerouslySetInnerHTML={{
                                 __html: this.computeIngredientsHTML()
                             }}>
@@ -88,6 +93,26 @@ class EditRecipeComponent extends React.Component {
                                 onClick={() => {
                                     saveIngredients(this.state.id)
                                     this.setState({ ingOpen: false })
+                                }}
+                            />
+                        </Modal.Actions>
+                    </Modal>
+                    <Modal size={'fullscreen'} open={this.state.insOpen} style={{ marginLeft: "40px" }} onClose={() => {
+                        this.setState({ insOpen: false })
+                    }}>
+                        <Modal.Header>Edit Instructions</Modal.Header>
+                        <Modal.Content style={{ height: "500px" }}>
+                            <div contentEditable={true} dangerouslySetInnerHTML={{ __html: this.state.instructions ? this.state.instructions : "<p>Enter Instructions</p>" }} className="thingcontainer" id="editInstructions"></div>
+                        </Modal.Content>
+                        <Modal.Actions>
+                            <Button
+                                color={"blue"}
+                                icon='checkmark'
+                                labelPosition='right'
+                                content='Save'
+                                onClick={() => {
+                                    saveInstructions(this.state.id)
+                                    this.setState({ insOpen: false })
                                 }}
                             />
                         </Modal.Actions>
@@ -137,8 +162,9 @@ class EditRecipeComponent extends React.Component {
                             }
                             {
                                 this.state.instructions ?
-                                    <div className="thingcontainer" dangerouslySetInnerHTML={{__html:
-                                        this.state.instructions
+                                    <div className="thingcontainer" dangerouslySetInnerHTML={{
+                                        __html:
+                                            this.state.instructions
                                     }}>
                                     </div> : null
                             }<br></br><br></br>

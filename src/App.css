@@ -104,6 +104,13 @@
   margin-bottom: 10px;
 }
 
+.instructions {
+  font-family: 'Playfair Display', serif !important;
+}
+.instructions div{
+  font-family: 'Playfair Display', serif !important;
+}
+
 .recipe{
   float: left;
   margin: 25px;
